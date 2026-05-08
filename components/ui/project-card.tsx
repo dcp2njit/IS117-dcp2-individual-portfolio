@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { FadeIn } from "@/components/ui/fade-in";
 import type { Project } from "@/lib/site-data";
 
@@ -15,19 +17,28 @@ const statusStyles: Record<Project["status"], string> = {
 export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
   return (
     <FadeIn delay={delay} className="surface-card overflow-hidden">
-      <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
+      <div className="grid gap-0 lg:grid-cols-[1.618fr_1fr]">
         <div className="border-b border-white/10 p-6 sm:p-8 lg:border-b-0 lg:border-r">
           <div className="mb-5 flex flex-wrap items-center gap-3">
             <span className={`rounded-full border px-3 py-1 text-xs font-medium uppercase tracking-[0.25em] ${statusStyles[project.status]}`}>
               {project.status}
             </span>
-            <span className="text-sm text-mist">{project.proofLabel}</span>
+            <span className="detail-copy">{project.proofLabel}</span>
           </div>
 
           <div className="space-y-4">
             <p className="text-sm uppercase tracking-[0.3em] text-mist">{project.tagline}</p>
-            <h3 className="font-serif text-3xl text-paper">{project.title}</h3>
-            <p className="text-base leading-7 text-mist">{project.summary}</p>
+            <h3 className="card-title">{project.title}</h3>
+            <p className="body-copy">{project.summary}</p>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {project.storyPoints.map((point) => (
+              <div key={point.label} className="rounded-[1.4rem] border border-white/10 bg-white/5 p-4">
+                <p className="text-[11px] uppercase tracking-[0.28em] text-rose/80">{point.label}</p>
+                <p className="detail-copy mt-3 text-paper/82">{point.text}</p>
+              </div>
+            ))}
           </div>
 
           <div className="mt-8 flex flex-wrap gap-2">
@@ -44,17 +55,28 @@ export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
 
         <div className="flex flex-col justify-between gap-5 p-6 sm:p-8">
           <div className="rounded-[1.5rem] border border-dashed border-white/15 bg-gradient-to-br from-rose/15 via-white/5 to-transparent p-6">
-            <p className="text-xs uppercase tracking-[0.3em] text-mist">Visual Proof</p>
-            <div className="mt-6 rounded-[1.25rem] border border-white/10 bg-hero-grid bg-[size:22px_22px] p-6">
-              <div className="aspect-[4/3] rounded-[1rem] border border-white/10 bg-gradient-to-br from-white/10 to-transparent" />
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p className="text-xs uppercase tracking-[0.3em] text-mist">Visual Proof</p>
+              <span className="rounded-full border border-rose/20 bg-rose/10 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-paper/80">
+                {project.artifactType}
+              </span>
+            </div>
+            <div className="mt-6 overflow-hidden rounded-[1.25rem] border border-white/10 bg-hero-grid bg-[size:22px_22px]">
+              <Image
+                src={project.imageSrc}
+                alt={project.imageAlt}
+                width={1200}
+                height={900}
+                className="aspect-[4/3] h-auto w-full object-cover"
+              />
             </div>
           </div>
 
           <div>
             <p className="mb-3 text-xs uppercase tracking-[0.3em] text-mist">Process Notes</p>
-            <ul className="space-y-3 text-sm leading-6 text-mist">
+            <ul className="space-y-3">
               {project.processNotes.map((note) => (
-                <li key={note} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                <li key={note} className="detail-copy rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                   {note}
                 </li>
               ))}

@@ -33,7 +33,7 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body className={`${spaceGrotesk.variable} ${instrumentSerif.variable} font-sans text-paper antialiased`}>
         <div className="relative flex min-h-screen flex-col overflow-x-clip">
           <div className="pointer-events-none absolute inset-0 bg-hero-grid bg-[size:52px_52px] opacity-[0.04]" />

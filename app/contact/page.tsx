@@ -10,18 +10,17 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="container-shell py-16 sm:py-20 lg:py-24">
+    <section className="container-shell section-block">
       <SectionHeading
         eyebrow="Contact"
         title="Reach out for internships, collaboration, or product conversation."
-        description="Sprint 1 keeps contact simple and accessible: direct channels, clear labels, and fast ways to connect without friction."
       />
 
-      <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="grid gap-6 lg:grid-cols-[1fr_1.618fr]">
         <FadeIn className="surface-card p-6 sm:p-8">
           <p className="text-xs uppercase tracking-[0.3em] text-mist">Availability</p>
-          <h2 className="mt-4 font-serif text-4xl text-paper">Open to internship opportunities in AI product, front-end, and interactive experience work.</h2>
-          <p className="mt-5 text-base leading-7 text-mist">
+          <h2 className="card-title mt-4">Open to internship opportunities in AI product, front-end, and interactive experience work.</h2>
+          <p className="body-copy mt-5">
             If you are hiring for a role that values technical curiosity, product thinking, and design-aware implementation, I would like to talk.
           </p>
         </FadeIn>
@@ -35,7 +34,7 @@ export default function ContactPage() {
               >
                 <div>
                   <p className="text-xs uppercase tracking-[0.3em] text-mist">{method.label}</p>
-                  <p className="mt-3 text-xl text-paper">{method.value}</p>
+                  <p className="mt-3 text-lg text-paper sm:text-xl">{method.value}</p>
                 </div>
                 <span className="rounded-full border border-white/10 px-4 py-2 text-sm text-mist">Open</span>
               </Link>

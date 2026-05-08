@@ -4,12 +4,28 @@
 
 :root {
   color-scheme: dark;
+  --phi: 1.618;
   --background: #1a1f2b;
   --surface: rgba(246, 241, 245, 0.08);
   --surface-strong: rgba(246, 241, 245, 0.12);
   --text: #f6f1f5;
   --muted: #d9d6e0;
   --accent: #b28b9f;
+  --space-1: 0.625rem;
+  --space-2: 1rem;
+  --space-3: 1.625rem;
+  --space-4: 2.625rem;
+  --space-5: 4.25rem;
+  --space-6: 6.875rem;
+  --measure-tight: 28rem;
+  --measure-copy: 39rem;
+  --measure-wide: 46rem;
+  --step--1: clamp(0.875rem, 0.84rem + 0.16vw, 1rem);
+  --step-0: clamp(1rem, 0.96rem + 0.22vw, 1.125rem);
+  --step-1: clamp(1.125rem, 1.02rem + 0.45vw, 1.375rem);
+  --step-2: clamp(1.5rem, 1.22rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.5rem + 1.9vw, 3.25rem);
+  --step-4: clamp(3.25rem, 2.2rem + 3.5vw, 5.75rem);
 }
 
 * {
@@ -17,6 +33,7 @@
 }
 
 html {
+  position: relative;
   scroll-behavior: smooth;
 }
 
@@ -28,6 +45,7 @@ body {
     radial-gradient(circle at top right, rgba(61, 68, 81, 0.55), transparent 28%),
     linear-gradient(180deg, #1a1f2b 0%, #202635 48%, #151922 100%);
   color: var(--text);
+  line-height: calc(var(--phi));
 }
 
 a {
@@ -54,7 +72,8 @@ a {
 
 @layer components {
   .container-shell {
-    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+    @apply mx-auto w-full px-5 sm:px-8 lg:px-12;
+    max-width: 76rem;
   }
 
   .surface-card {
@@ -62,19 +81,69 @@ a {
   }
 
   .eyebrow {
-    @apply inline-flex items-center rounded-full border border-rose/30 bg-rose/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.32em] text-mist;
+    @apply inline-flex items-center rounded-full border border-rose/30 bg-rose/10 font-medium uppercase text-mist;
+    gap: calc(var(--space-1) * 0.5);
+    padding-inline: calc(var(--space-2) - 0.125rem);
+    padding-block: 0.375rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.32em;
   }
 
   .page-title {
-    @apply font-serif text-5xl leading-none text-paper sm:text-6xl lg:text-7xl;
+    @apply font-serif text-paper;
+    font-size: var(--step-4);
+    line-height: 0.92;
   }
 
   .section-copy {
-    @apply max-w-2xl text-base leading-7 text-mist sm:text-lg;
+    @apply text-mist;
+    max-width: min(100%, var(--measure-copy));
+    font-size: var(--step-0);
+    line-height: 1.68;
+  }
+
+  .section-block {
+    padding-block: clamp(var(--space-5), 8vw, calc(var(--space-6) + 1rem));
+  }
+
+  .section-title {
+    @apply font-serif text-paper;
+    font-size: var(--step-3);
+    line-height: 1.02;
+    max-width: min(100%, var(--measure-wide));
+  }
+
+  .card-title {
+    @apply font-serif text-paper;
+    font-size: var(--step-2);
+    line-height: 1.08;
+  }
+
+  .body-copy {
+    @apply text-mist;
+    font-size: var(--step-0);
+    line-height: 1.68;
+    max-width: min(100%, var(--measure-copy));
+  }
+
+  .detail-copy {
+    @apply text-mist;
+    font-size: var(--step--1);
+    line-height: 1.6;
+  }
+
+  .stat-number {
+    @apply font-serif text-paper;
+    font-size: var(--step-3);
+    line-height: 0.95;
   }
 
   .nav-link {
-    @apply rounded-full px-4 py-2 text-sm text-mist transition duration-300 hover:bg-white/10 hover:text-paper;
+    @apply rounded-full text-mist transition duration-300 hover:bg-white/10 hover:text-paper;
+    padding-inline: 1rem;
+    padding-block: 0.625rem;
+    font-size: 0.925rem;
+    line-height: 1.2;
   }
 }
 
