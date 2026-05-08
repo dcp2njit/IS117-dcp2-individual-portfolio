@@ -1,3 +1,5 @@
+import { assetPath } from "@/lib/asset-path";
+
 export type ProjectStatus = "Concept" | "In Progress" | "Completed";
 
 export type Project = {
@@ -81,7 +83,7 @@ export const projects: Project[] = [
     ],
     proofLabel: "Wireframes, interaction flow, and prompt exploration",
     artifactType: "Prototype interface mockup",
-    imageSrc: "/projects/ai-study-buddy-proof.svg",
+    imageSrc: assetPath("/projects/ai-study-buddy-proof.svg"),
     imageAlt: "AI Study Buddy screens showing planning and study flow interface mockups.",
     technologies: ["Next.js", "TypeScript", "OpenAI API", "Figma"],
     featured: true
@@ -128,7 +130,7 @@ export const projects: Project[] = [
     ],
     proofLabel: "Animation studies, layout experiments, and responsive checkpoints",
     artifactType: "Motion and layout study board",
-    imageSrc: "/projects/portfolio-lab-proof.svg",
+    imageSrc: assetPath("/projects/portfolio-lab-proof.svg"),
     imageAlt: "Portfolio Interaction Lab board showing layout studies and motion direction.",
     technologies: ["Next.js", "Tailwind CSS", "Framer Motion"],
     featured: true
@@ -175,7 +177,7 @@ export const projects: Project[] = [
     ],
     proofLabel: "Concept map, user journey, and service blueprint",
     artifactType: "Service concept overview",
-    imageSrc: "/projects/ai-campus-guide-proof.svg",
+    imageSrc: assetPath("/projects/ai-campus-guide-proof.svg"),
     imageAlt: "AI Campus Guide concept board with journey and service interface visuals.",
     technologies: ["Research", "Service Design", "Prompt Design"]
   }

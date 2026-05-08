@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
+import { assetPath } from "@/lib/asset-path";
+
 type HomeHeroVisualProps = {
   focusText: string;
 };
@@ -32,7 +34,7 @@ export function HomeHeroVisual({ focusText }: HomeHeroVisualProps) {
         className="absolute bottom-[6%] right-[6%] top-[12%] w-[78%] overflow-hidden rounded-[2.5rem] border border-rose/25 bg-[#201925] shadow-[0_40px_120px_rgba(19,22,31,0.45)] md:right-[9%] md:top-[14%] md:w-[72%] lg:bottom-[7%] lg:right-[8%] lg:w-[66%]"
       >
         <Image
-          src="/header.png"
+          src={assetPath("/header.png")}
           alt="Denise working on a laptop with a product interface open on screen."
           fill
           priority

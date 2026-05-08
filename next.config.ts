@@ -7,6 +7,9 @@ const basePath = isGitHubActions && repositoryName ? `/${repositoryName}` : "";
 const nextConfig: NextConfig = {
 	outputFileTracingRoot: process.cwd(),
 	output: "export",
+	env: {
+		NEXT_PUBLIC_BASE_PATH: basePath
+	},
 	images: {
 		unoptimized: true
 	},
